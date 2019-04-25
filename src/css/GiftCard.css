@@ -1,5 +1,52 @@
-.form {
+h4 {
+    padding:0;
+    margin:0;
+}
+
+.form-wrapper {
+    display:flex;
+    width:100%;
+    align-content: center;
+    justify-content: center;
+}
+
+.form, .apply-btn {
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    flex-direction: column;
+    color:#333333;
+    width:432px;
+}
+
+.gift-checkbox {
+    display:flex;
+    flex-direction: row;
+}
+
+input {
+    text-align: left;
+}
+
+.gift-number {
+    display:flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    flex-direction:row;
+}
+
+.apply-btn {
     display:flex;
     justify-content: center;
-    align-content: center;
+    flex-direction:row;
+}
+
+.apply-btn {
+    background: #333333;
+    color:#FFFFFF;
+    border:none;
+    width:140px;
+    height:44px;
+    font-weight: 900;
+    
 }
