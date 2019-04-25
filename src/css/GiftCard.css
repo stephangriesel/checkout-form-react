@@ -1,52 +1,82 @@
 h4 {
-    padding:0;
-    margin:0;
+    padding: 0;
+    margin: 0;
+    font-weight: 600;
+    font-size: 15px;
 }
 
 .form-wrapper {
-    display:flex;
-    width:100%;
+    display: flex;
+    width: 100%;
     align-content: center;
     justify-content: center;
 }
 
+.form {
+    background: #ffffff;
+    padding: 10px;
+    margin: 10px;
+}
+
 .form, .apply-btn {
     display: flex;
+    font-size: 14px;
     justify-content: flex-start;
     align-items: flex-start;
     flex-direction: column;
-    color:#333333;
-    width:432px;
+    color: #333333;
+    width: 432px;
 }
 
 .gift-checkbox {
-    display:flex;
+    display: flex;
     flex-direction: row;
+    margin: 10px 0;
 }
 
-input {
-    text-align: left;
+.gift-checkbox input {
+    margin-left:0;
 }
 
 .gift-number {
-    display:flex;
+    display: flex;
     justify-content: flex-start;
     align-items: flex-start;
-    flex-direction:row;
+    flex-direction: row;
+}
+
+.gift-number input {
+    border:rgb(212, 212, 212) solid 0.5px;
+    padding:2px 5px;
+    font-size:13px;
+    height:44px;
+    margin:10px 7px 10px 0;
+    width:300px;
+    outline:none;
+}
+
+.gift-number input:nth-child(2) {
+    padding:2px 5px;
+    font-size:13px;
+    height:44px;
+    margin:10px 7px 10px 0;
+    width:100px;
 }
 
 .apply-btn {
-    display:flex;
+    display: flex;
     justify-content: center;
-    flex-direction:row;
+    flex-direction: row;
 }
 
 .apply-btn {
     background: #333333;
-    color:#FFFFFF;
-    border:none;
-    width:140px;
-    height:44px;
+    color: #FFFFFF;
+    border: none;
+    width: 140px;
+    height: 44px;
     font-weight: 900;
-    
 }
+
+
+
