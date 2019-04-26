@@ -1,11 +1,5 @@
-h4 {
-    padding: 0;
-    margin: 0;
-    font-weight: 600;
-    font-size: 15px;
-}
-
 .form-wrapper {
+    font-family: 'Work Sans', sans-serif;
     display: flex;
     width: 100%;
     align-content: center;
@@ -16,9 +10,6 @@ h4 {
     background: #ffffff;
     padding: 10px;
     margin: 10px;
-}
-
-.form, .apply-btn {
     display: flex;
     font-size: 14px;
     justify-content: flex-start;
@@ -28,62 +19,25 @@ h4 {
     width: 432px;
 }
 
+h4 {
+    padding: 0;
+    margin: 0;
+    font-weight: 600;
+    font-size: 15px;
+}
+
+/* Checkbox */
+
 .gift-checkbox {
     display: flex;
     flex-direction: row;
     margin: 10px 0;
 }
 
-.gift-checkbox input {
-    margin-left: 0;
-}
-
-.gift-number {
-    display: flex;
-    justify-content: flex-start;
-    align-items: flex-start;
-    flex-direction: row;
-}
-
-.gift-number input {
-    border: rgb(212, 212, 212) solid 0.5px;
-    padding: 2px 5px;
-    font-size: 13px;
-    height: 44px;
-    margin: 10px 7px 10px 0;
-    width: 300px;
-    outline: none;
-}
-
-.gift-number input:nth-child(2) {
-    padding: 2px 5px;
-    font-size: 13px;
-    height: 44px;
-    margin: 10px 7px 10px 0;
-    width: 100px;
-}
-
-.apply-btn {
-    display: flex;
-    justify-content: center;
-    flex-direction: row;
-}
-
-.apply-btn {
-    background: #333333;
-    color: #FFFFFF;
-    border: none;
-    width: 140px;
-    height: 44px;
-    font-weight: 900;
-}
-
-/* Checkbox */
-
 .container {
     display: block;
     position: relative;
-    padding-top:2px;
+    padding-top:1px;
     padding-left: 22px;
     /* margin-bottom: 12px; */
     cursor: pointer;
@@ -140,3 +94,76 @@ h4 {
     -ms-transform: rotate(45deg);
     transform: rotate(45deg);
   }
+
+  /* Gift Result */
+
+  .coupon-desc {
+      color:#33333398;
+      font-size:12px;
+      text-align: left;
+  }
+  
+  .result {
+      background:#f2f3f2;
+      height: 56px;
+      display:flex;
+      justify-content: space-between;
+      align-items: center;
+      padding:0 12px;
+  }
+
+  .result-left {
+      text-align: left;
+  }
+
+  .result-right {
+      font-weight: 900;
+  }
+
+  .result p {
+      color:#333333bb;
+      font-size:12px;
+      margin:5px 0;
+      padding:0;
+  }
+
+  /* Gift Number */
+
+  .gift-number {
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    flex-direction: row;
+}
+
+.gift-number input {
+    border: rgb(212, 212, 212) solid 0.5px;
+    padding: 2px 5px;
+    font-size: 13px;
+    height: 44px;
+    margin: 10px 7px 10px 0;
+    width: 300px;
+    outline: none;
+}
+
+.gift-number input:nth-child(2) {
+    padding: 2px 5px;
+    font-size: 13px;
+    height: 44px;
+    margin: 10px 0;
+    width: 100px;
+}
+
+  /* Apply Button */
+
+  .apply-btn {
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    background: #333333;
+    color: #FFFFFF;
+    border: none;
+    width: 140px;
+    height: 44px;
+    font-weight: 900;
+}
