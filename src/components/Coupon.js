@@ -32,6 +32,11 @@ class Coupon extends Component {
         e.preventDefault();
     };
 
+
+    handleSubmit = () => {
+        console.log(this.state);
+    }
+
     render() {
 
         return (
@@ -70,6 +75,7 @@ class Coupon extends Component {
                             id="control__gift-number"
                             placeholder="Control Code"
                             required />
+                            <button onClick={this.handleSubmit} className="apply-btn" >APPLY</button>
                     </form>
                 </div>
             </div>

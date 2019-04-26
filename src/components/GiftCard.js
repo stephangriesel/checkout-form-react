@@ -18,6 +18,10 @@ class GiftCard extends Component {
         });
     }
 
+    handleSubmit = () => {
+        console.log(this.state);
+    }
+
 
     render() {
         return (
@@ -38,7 +42,7 @@ class GiftCard extends Component {
                         <Coupon />
                         : null}
 
-                    <button className="apply-btn">APPLY</button>
+                    {/* <button onClick={this.handleSubmit} className="apply-btn" >APPLY</button> */}
 
                 </div>
             </div>
