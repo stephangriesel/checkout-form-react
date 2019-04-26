@@ -1,46 +1,25 @@
 import React, { Component } from 'react';
 
-const inputState = {
-    value: "",
-    valid: true,
-    typeMismatch: false,
-    errMsg: ""
-};
-
-const ErrorValidationLabel = ({ txtLbl }) => (
-    <label htmlFor="" style={{ color: "red" }}>
-        {txtLbl}
-    </label>
-);
-
 class Coupon extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            showResult: false,
-            coupon: {
-                ...inputState,
-                fieldName: "Coupon Number",
-                required: true,
-                requiredTxt: "Coupon Code Required",
-                formatErrorTxt: "Incorrect coupon format",
-            },
-            couponcontrol: {
-                ...inputState,
-                fieldName: "Coupon Control Code",
-                required: true,
-                requiredTxt: "Coupon Control Code Required",
-                formatErrorTxt: "Incorrect ccontrol code format"
-            },
-            allFieldsValid: false
+            coupon: "testcoupon",
+            couponControl: "testcouponcontrol"
         }
         this.showResult = this.showResult.bind(this); // es6 option also possible
     };
 
-    handleChange = event => {
-        console.log("handle change working"); // TEST
+    handleChangeCoupon = event => {
+        console.log("handle coupon working"); // TEST
         console.log(event.target.value); // TEST
         this.setState({ coupon: event.target.value });
+    };
+
+    handleChangeControl = event => {
+        console.log("handle control working"); // TEST
+        console.log(event.target.value); // TEST
+        this.setState({ couponControl: event.target.value });
     };
 
     showResult() {
@@ -54,26 +33,8 @@ class Coupon extends Component {
     };
 
     render() {
-        const { coupon, couponcontrol } = this.state;
-
-        const renderCouponValidationError = coupon.valid ?
-            "" :
-            <ErrorValidationLabel
-                txtLbl={coupon.typeMismatch ?
-                    coupon.formatErrorTxt :
-                    coupon.requiredTxt}
-            />;
-
-        const renderCouponControlValidationError = couponcontrol.valid ?
-            "" :
-            <ErrorValidationLabel
-                txtLbl={couponcontrol.typeMismatch ?
-                    couponcontrol.formatErrorTxt :
-                    couponcontrol.requiredTxt}
-            />;
 
         return (
-            <React.Fragment>
             <div className="show-coupon">
                 <p className="coupon-desc">Please enter the 19-digit number and code from your gift card below.</p>
                 {this.state.showResult ?
@@ -93,28 +54,25 @@ class Coupon extends Component {
                         noValidate>
 
                         <input
-                            onChange={this.handleChange}
+                            onChange={this.handleChangeCoupon}
                             value={this.state.coupon}
                             name="giftcard-number"
                             type="number"
                             id="number__gift-number"
                             placeholder="Gift Card Number"
                             required />
-                        {renderCouponValidationError}
 
                         <input
-                            onChange={this.handleChange}
+                            onChange={this.handleChangeControl}
+                            value={this.state.couponcontrol}
                             name="giftcard-code"
                             type="number"
                             id="control__gift-number"
                             placeholder="Control Code"
                             required />
-                        {renderCouponControlValidationError}
-
                     </form>
                 </div>
             </div>
-            </React.Fragment>
             )
     }
 }
