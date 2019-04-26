@@ -143,7 +143,7 @@ input[type=number]::-webkit-inner-spin-button, input[type=number]::-webkit-outer
     flex-direction: row;
 }
 
-.gift-number input {
+#number__gift-number {
     border: rgb(212, 212, 212) solid 0.5px;
     padding: 2px 5px;
     font-size: 13px;
@@ -153,12 +153,14 @@ input[type=number]::-webkit-inner-spin-button, input[type=number]::-webkit-outer
     outline: none;
 }
 
-.gift-number input:nth-child(2) {
+#control__gift-number {
+    border: rgb(212, 212, 212) solid 0.5px;
     padding: 2px 5px;
     font-size: 13px;
     height: 44px;
     margin: 10px 0;
     width: 100px;
+    outline: none;
 }
 
 /* Apply Button */

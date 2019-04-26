@@ -23,7 +23,7 @@ class Coupon extends Component {
                 fieldName: "Coupon Number",
                 required: true,
                 requiredTxt: "Coupon Code Required",
-                formatErrorTxt: "Incorrect coupon format"
+                formatErrorTxt: "Incorrect coupon format",
             },
             couponcontrol: {
                 ...inputState,
@@ -35,7 +35,13 @@ class Coupon extends Component {
             allFieldsValid: false
         }
         this.showResult = this.showResult.bind(this); // es6 option also possible
-    }
+    };
+
+    handleChange = event => {
+        console.log("handle change working"); // TEST
+        console.log(event.target.value); // TEST
+        this.setState({ coupon: event.target.value });
+    };
 
     showResult() {
         this.setState({
@@ -46,68 +52,6 @@ class Coupon extends Component {
     onSubmit = e => {
         e.preventDefault();
     };
-
-
-
-    // Codeburst Start 
-
-    //we need to extract specific properties in Constraint Validation API using this code snippet
-    reduceFormValues = formElements => {
-        const arrElements = Array.prototype.slice.call(formElements); //we convert elements/inputs into an array found inside form element
-        //we need to extract specific properties in Constraint Validation API using this code snippet
-        const formValues = arrElements
-            .filter(elem => elem.name.length > 0)
-            .map(x => {
-                const { typeMismatch } = x.validity;
-                const { name, type, value } = x;
-                return {
-                    name,
-                    type,
-                    typeMismatch, //we use typeMismatch when format is incorrect(e.g. incorrect email)
-                    value,
-                    valid: x.checkValidity()
-                };
-            })
-            .reduce((acc, currVal) => { //then we finally use reduce, ready to put it in our state
-                const { value, valid, typeMismatch } = currVal;
-                const {
-                    fieldName,
-                    requiredTxt,
-                    formatErrorTxt
-                } = this.state[currVal.name]; //get the rest of properties inside the state object
-                //we'll need to map these properties back to state so we use reducer...
-                acc[currVal.name] = {
-                    value,
-                    valid,
-                    typeMismatch,
-                    fieldName,
-                    requiredTxt,
-                    formatErrorTxt
-                };
-                return acc;
-            }, {});
-        return formValues;
-    }
-    checkAllFieldsValid = (formValues) => {
-        return !Object.keys(formValues)
-            .map(x => formValues[x])
-            .some(field => !field.valid);
-    };
-    onSubmit = e => {
-        e.preventDefault();
-        const form = e.target;
-        const formValues = this.reduceFormValues(form.elements);
-        const allFieldsValid = this.checkAllFieldsValid(formValues);
-
-        //note: put ajax calls here to persist the form inputs in the database.
-        //END
-        this.setState({ ...formValues, allFieldsValid }); //we set the state based on the extracted values from Constraint Validation API
-    };
-
-    //END
-
-
-    // Codenburst end
 
     render() {
         const { coupon, couponcontrol } = this.state;
@@ -129,6 +73,7 @@ class Coupon extends Component {
             />;
 
         return (
+            <React.Fragment>
             <div className="show-coupon">
                 <p className="coupon-desc">Please enter the 19-digit number and code from your gift card below.</p>
                 {this.state.showResult ?
@@ -146,13 +91,31 @@ class Coupon extends Component {
                     <form className="giftnumber-input"
                         onSubmit={this.onSubmit}
                         noValidate>
-                        <input name="giftcard-number" type="number" id="number-space" placeholder="Gift Card Number" required />
+
+                        <input
+                            onChange={this.handleChange}
+                            value={this.state.coupon}
+                            name="giftcard-number"
+                            type="number"
+                            id="number__gift-number"
+                            placeholder="Gift Card Number"
+                            required />
                         {renderCouponValidationError}
-                        <input name="giftcard-code" type="number" placeholder="Control Code" required />
+
+                        <input
+                            onChange={this.handleChange}
+                            name="giftcard-code"
+                            type="number"
+                            id="control__gift-number"
+                            placeholder="Control Code"
+                            required />
                         {renderCouponControlValidationError}
+
                     </form>
                 </div>
-            </div>)
+            </div>
+            </React.Fragment>
+            )
     }
 }
 
