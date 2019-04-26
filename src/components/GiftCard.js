@@ -9,8 +9,10 @@ class GiftCard extends Component {
                     <h4>Gift Cards</h4>
                     <form>
                         <div className="gift-checkbox">
-                            <input type="checkbox" name="giftcard-checkbox" />
-                            <label><span className="check">Do you have a gift card?</span></label>
+                            <label class="container">Do you have a gift card?
+                                <input type="checkbox" name="giftcard-checkbox" />
+                                <span className="checkmark"></span>                            
+                            </label>
                         </div>
                         <div className="gift-number">
                             <input /><input />
