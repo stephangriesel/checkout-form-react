@@ -3,6 +3,7 @@ import '../css/GiftCard.css';
 import Coupon from './Coupon'
 
 class GiftCard extends Component {
+
     constructor(props) {
         super(props);
         this.state = {
@@ -16,25 +17,29 @@ class GiftCard extends Component {
             showCoupon: !this.state.showCoupon
         });
     }
+
+
     render() {
         return (
             <div className="form-wrapper">
                 <div className="form">
                     <h4>Gift Cards</h4>
-                    <form>
-                        <div className="gift-checkbox">
-                            <label class="container">Do you have a gift card?
+
+                    <div className="gift-checkbox">
+                        <form>
+                            <label className="container">Do you have a gift card?
                                 <input type="checkbox" name="giftcard-checkbox" onClick={this.showCoupon} />
                                 <span className="checkmark"></span>
                             </label>
-                        </div>
+                        </form>
+                    </div>
 
-                        {this.state.showCoupon ?
-                            <Coupon />
-                            : null}
+                    {this.state.showCoupon ?
+                        <Coupon />
+                        : null}
 
-                        <button className="apply-btn">APPLY</button>
-                    </form>
+                    <button className="apply-btn">APPLY</button>
+
                 </div>
             </div>
         );
