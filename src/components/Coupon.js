@@ -1,12 +1,16 @@
 import React, { Component } from 'react';
 
+const initialState = {
+    coupon: "",
+    couponcontrol: "",
+    couponError: "",
+    controlError: ""
+}
+
 class Coupon extends Component {
     constructor(props) {
         super(props);
-        this.state = {
-            coupon: "",
-            couponControl: ""
-        }
+        this.state = initialState;
         this.showResult = this.showResult.bind(this); // es6 option also possible
     };
 
@@ -44,7 +48,32 @@ class Coupon extends Component {
 
     handleSubmit = (e) => {
         e.preventDefault();
-        console.log(this.state);
+        const isValid = this.validate();
+        if (isValid) {
+            console.log(this.state);
+            //clear form
+            this.setState(initialState);
+        }
+    };
+
+    validate = () => {
+        let couponError = "";
+        let controlError="";
+        
+        if(!this.state.coupon) { // if it does not include
+            couponError = "Incorrect coupon code, please try again"
+        }
+
+        if(!this.state.controlError) {
+            controlError = "Your control code seems to be invalid, please try again"
+        }
+
+        if (couponError || controlError ) {
+            this.setState({ couponError, controlError });
+            return false;
+        }
+
+        return true;
     }
 
     render() {
@@ -72,24 +101,30 @@ class Coupon extends Component {
                             name="coupon"
                             value={this.state.coupon}
                             onChange={this.handleChange}
-                            type="number"
+                            // type="number" // react can only use string together with maxlength
+                            maxLength="19"
                             id="number__gift-number"
                             placeholder="Gift Card Number"
                             required />
 
                         <input
+                            name="couponcontrol"
                             value={this.state.couponcontrol}
                             onChange={this.handleChange}
-                            name="control"
-                            type="number"
+                            // type="number"
+                            maxLength="3"
                             id="control__gift-number"
                             placeholder="Control Code"
                             required />
-                            <button type="submit" className="apply-btn" >APPLY</button>
+
+                        <button type="submit" className="apply-btn" >APPLY</button>
                     </form>
                 </div>
+                <p>{this.state.couponError}</p>
+                <p>{this.state.controlError}</p>
             </div>
-            )
+
+        )
     }
 }
 
