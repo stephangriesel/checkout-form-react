@@ -4,23 +4,32 @@ class Coupon extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            coupon: "testcoupon",
-            couponControl: "testcouponcontrol"
+            coupon: "",
+            couponControl: ""
         }
         this.showResult = this.showResult.bind(this); // es6 option also possible
     };
 
-    handleChangeCoupon = event => {
-        console.log("handle coupon working"); // TEST
-        console.log(event.target.value); // TEST
-        this.setState({ coupon: event.target.value });
+    handleChange = (event, fieldName) => {
+        console.log('property passed:', event.target.name);
+        // console.log('fieldname:', fieldName);
+        // console.log("handle coupon working"); // TEST
+        // console.log(event.target.value); // TEST
+        this.setState({ [event.target.name]: event.target.value });
     };
 
-    handleChangeControl = event => {
-        console.log("handle control working"); // TEST
-        console.log(event.target.value); // TEST
-        this.setState({ couponControl: event.target.value });
-    };
+    // Before refactor:
+    // handleChangeCoupon = event => {
+    //     console.log("handle coupon working"); // TEST
+    //     console.log(event.target.value); // TEST
+    //     this.setState({ coupon: event.target.value });
+    // };
+
+    // handleChangeControl = event => {
+    //     console.log("handle control working"); // TEST
+    //     console.log(event.target.value); // TEST
+    //     this.setState({ couponControl: event.target.value });
+    // };
 
     showResult() {
         this.setState({
@@ -33,7 +42,8 @@ class Coupon extends Component {
     };
 
 
-    handleSubmit = () => {
+    handleSubmit = (e) => {
+        e.preventDefault();
         console.log(this.state);
     }
 
@@ -55,27 +65,27 @@ class Coupon extends Component {
                     : null}
                 <div className="gift-number">
                     <form className="giftnumber-input"
-                        onSubmit={this.onSubmit}
+                        onSubmit={this.handleSubmit}
                         noValidate>
 
                         <input
-                            onChange={this.handleChangeCoupon}
+                            name="coupon"
                             value={this.state.coupon}
-                            name="giftcard-number"
+                            onChange={this.handleChange}
                             type="number"
                             id="number__gift-number"
                             placeholder="Gift Card Number"
                             required />
 
                         <input
-                            onChange={this.handleChangeControl}
                             value={this.state.couponcontrol}
-                            name="giftcard-code"
+                            onChange={this.handleChange}
+                            name="control"
                             type="number"
                             id="control__gift-number"
                             placeholder="Control Code"
                             required />
-                            <button onClick={this.handleSubmit} className="apply-btn" >APPLY</button>
+                            <button type="submit" className="apply-btn" >APPLY</button>
                     </form>
                 </div>
             </div>
