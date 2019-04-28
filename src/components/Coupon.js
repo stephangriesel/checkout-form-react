@@ -120,8 +120,8 @@ class Coupon extends Component {
                         <button type="submit" className="apply-btn" >APPLY</button>
                     </form>
                 </div>
-                <p>{this.state.couponError}</p>
-                <p>{this.state.controlError}</p>
+                <p className="errorMessage">{this.state.couponError}</p>
+                <p className="errorMessage">{this.state.controlError}</p>
             </div>
 
         )

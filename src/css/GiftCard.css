@@ -176,3 +176,8 @@ input[type=number]::-webkit-inner-spin-button, input[type=number]::-webkit-outer
     height: 44px;
     font-weight: 900;
 }
+
+/* Coupon error */
+.errorMessage {
+    color:#c50000;
+}
