@@ -108,6 +108,8 @@ class Coupon extends Component {
                             maxLength="3"
                             id="control__gift-number"
                             placeholder="Control Code"
+                            onFocus={this.onInputFocus}
+                            onBlur={this.onInputBlur}
                             required />
 
                         <button type="submit" className="apply-btn" >APPLY</button>
