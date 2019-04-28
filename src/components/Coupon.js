@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Result from './Result';
 
 const initialState = {
+    focus: false,
     showResult: true,
     coupon: "",
     couponcontrol: "",
@@ -24,6 +25,18 @@ class Coupon extends Component {
     showResult() {
         this.setState({
             showResult: !this.state.showResult
+        });
+    }
+
+    onInputFocus = () => {
+        this.setState({
+            focus: true
+        });
+    }
+
+    onInputBlur = () => {
+        this.setState({
+            focus: false
         });
     }
 
@@ -67,7 +80,7 @@ class Coupon extends Component {
         return (
             <div className="show-coupon">
                 <p className="coupon-desc">Please enter the 19-digit number and code from your gift card below.</p>
-                {this.state.showResult ?
+                {this.state.focus ?
                     <Result />
                     : null}
                 <div className="gift-number">
@@ -83,6 +96,8 @@ class Coupon extends Component {
                             maxLength="19"
                             id="number__gift-number"
                             placeholder="Gift Card Number"
+                            onFocus={this.onInputFocus}
+                            onBlur={this.onInputBlur}
                             required />
 
                         <input
