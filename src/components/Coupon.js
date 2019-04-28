@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
+import Result from './Result';
 
 const initialState = {
+    showResult: true,
     coupon: "",
     couponcontrol: "",
     couponError: "",
@@ -16,24 +18,8 @@ class Coupon extends Component {
 
     handleChange = (event, fieldName) => {
         console.log('property passed:', event.target.name);
-        // console.log('fieldname:', fieldName);
-        // console.log("handle coupon working"); // TEST
-        // console.log(event.target.value); // TEST
         this.setState({ [event.target.name]: event.target.value });
     };
-
-    // Before refactor:
-    // handleChangeCoupon = event => {
-    //     console.log("handle coupon working"); // TEST
-    //     console.log(event.target.value); // TEST
-    //     this.setState({ coupon: event.target.value });
-    // };
-
-    // handleChangeControl = event => {
-    //     console.log("handle control working"); // TEST
-    //     console.log(event.target.value); // TEST
-    //     this.setState({ couponControl: event.target.value });
-    // };
 
     showResult() {
         this.setState({
@@ -82,15 +68,7 @@ class Coupon extends Component {
             <div className="show-coupon">
                 <p className="coupon-desc">Please enter the 19-digit number and code from your gift card below.</p>
                 {this.state.showResult ?
-                    <div className="result">
-                        <div className="result-left">
-                            <p>Gift card</p>
-                            <p>**** **** **** **** 123</p>
-                        </div>
-                        <div className="result-right">
-                            <p>-$20.00</p>
-                        </div>
-                    </div>
+                    <Result />
                     : null}
                 <div className="gift-number">
                     <form className="giftnumber-input"

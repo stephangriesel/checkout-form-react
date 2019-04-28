@@ -1,25 +1,32 @@
 {
-    "consumer":[
-        {
-            "id":"1",
-            "giftcardnumber:":"1234567890123456789",
-            "code":"123"
-        },
-        {
-            "id":"2",
-            "giftcardnumber:":"1234567890123456780",
-            "code":"124"
-        },
-        {
-            "id":"3",
-            "giftcardnumber:":"1234567890123456781",
-            "code":"125"
-        },
-        {
-            "id":"4",
-            "giftcardnumber:":"1234567890123456782",
-            "code":"126"
-        }
+    "results": {
+        "consumer":[
+            {
+                "id":"1",
+                "giftcardnumber":"3214567890123456789",
+                "code":"129",
+                "price":"19.88"
+            },
+            {
+                "id":"2",
+                "giftcardnumber":"4214567890123456780",
+                "code":"124",
+                "price":"11.20"
+            },
+            {
+                "id":"3",
+                "giftcardnumber":"5214567890123456781",
+                "code":"125",
+                "price":"30.50"
+            },
+            {
+                "id":"4",
+                "giftcardnumber":"6214567890123456782",
+                "code":"126",
+                "price":"5.00"
+            }
+    
+        ]
+    }
 
-    ]
 }
