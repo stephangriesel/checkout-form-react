@@ -50,7 +50,7 @@ class Coupon extends Component {
         
         // POST Data To Backend
         console.log("Coupon: " + this.state.coupon);
-        console.log("Coupon: " + this.state.couponcontrol);
+        console.log("Coupon Control Code: " + this.state.couponcontrol);
         const url = "http://localhost:3004/results";
         const submitteddata = {
             id:"1",
