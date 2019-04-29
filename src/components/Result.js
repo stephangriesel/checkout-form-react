@@ -11,7 +11,7 @@ class Result extends Component {
         const url = "http://localhost:3004/results";
         const response = await fetch(url);
         const data = await response.json();
-        this.setState({ consumer: data.consumer[0], loading: false });
+        this.setState({ consumer: data, loading: true });
         console.log(data);
     }
 

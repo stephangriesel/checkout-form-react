@@ -6,8 +6,8 @@ const initialState = {
     showResult: true,
     coupon: "",
     couponcontrol: "",
-    couponError: "",
-    controlError: ""
+    couponerror: "",
+    controlerror: ""
 }
 
 class Coupon extends Component {
@@ -47,6 +47,29 @@ class Coupon extends Component {
 
     handleSubmit = (e) => {
         e.preventDefault();
+        
+        // POST Data To Backend
+        console.log("Coupon: " + this.state.coupon);
+        console.log("Coupon: " + this.state.couponcontrol);
+        const url = "http://localhost:3004/results";
+        const submitteddata = {
+            id:"1",
+            giftcardnumber: this.state.coupon,
+            code: this.state.couponcontrol,
+            price:"9.99"
+        }
+        fetch(url, {
+            method: 'POST', // or 'PUT'
+            body: JSON.stringify(submitteddata), // data can be `string` or {object}!
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        }).then(res => res.json())
+            .then(response => console.log('Success:', JSON.stringify(response)))
+            .catch(error => console.error('Error:', error));
+        console.log(submitteddata)
+
+        // Validate form
         const isValid = this.validate();
         if (isValid) {
             console.log(this.state);
@@ -56,19 +79,19 @@ class Coupon extends Component {
     };
 
     validate = () => {
-        let couponError = "";
-        let controlError="";
-        
-        if(!this.state.coupon) { // if it does not include
-            couponError = "Incorrect coupon code, please try again"
+        let couponerror = "";
+        let controlerror = "";
+
+        if (!this.state.coupon) { // if it does not include
+            couponerror = "Incorrect coupon code, please try again"
         }
 
-        if(!this.state.controlError) {
-            controlError = "Your control code seems to be invalid, please try again"
+        if (!this.state.controlerror) {
+            controlerror = "Your control code seems to be invalid, please try again"
         }
 
-        if (couponError || controlError ) {
-            this.setState({ couponError, controlError });
+        if (couponerror || controlerror) {
+            this.setState({ couponerror, controlerror });
             return false;
         }
 
@@ -114,8 +137,8 @@ class Coupon extends Component {
                         <button type="submit" className="apply-btn" >APPLY</button>
                     </form>
                 </div>
-                <p className="errorMessage">{this.state.couponError}</p>
-                <p className="errorMessage">{this.state.controlError}</p>
+                <p className="errorMessage">{this.state.couponerror}</p>
+                <p className="errorMessage">{this.state.controlerror}</p>
             </div>
 
         )
