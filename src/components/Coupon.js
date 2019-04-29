@@ -10,6 +10,8 @@ const initialState = {
     controlerror: ""
 }
 
+
+
 class Coupon extends Component {
     constructor(props) {
         super(props);
@@ -104,7 +106,7 @@ class Coupon extends Component {
             <div className="show-coupon">
                 <p className="coupon-desc">Please enter the 19-digit number and code from your gift card below.</p>
                 {this.state.focus ?
-                    <Result />
+                    <Result coupon={this.state.coupon} couponcontrol={this.state.couponcontrol} />
                     : null}
                 <div className="gift-number">
                     <form className="giftnumber-input"
@@ -113,6 +115,7 @@ class Coupon extends Component {
 
                         <input
                             name="coupon"
+                            type="password"
                             value={this.state.coupon}
                             onChange={this.handleChange}
                             maxLength="19"
@@ -144,5 +147,6 @@ class Coupon extends Component {
         )
     }
 }
+
 
 export default Coupon;

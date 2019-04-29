@@ -14,15 +14,15 @@ class Result extends Component {
                     <p>Gift card</p>
                     <p>
                         <span id="coupon-displayNumber">
-                            **** **** **** ***
+                            {this.props.coupon}
                                     </span>
                         <span id="coupon-displayCode">
-                            <span> *** </span>
+                            <span> {this.props.couponcontrol} </span>
                         </span>
                     </p>
                 </div>
                 <div className="result-right">
-                    <p>-$<span>0.00</span></p>
+                    <p>-$<span>9.99</span></p>
                 </div>
 
             </div>
