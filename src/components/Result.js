@@ -26,15 +26,15 @@ class Result extends Component {
                                 <p>Gift card</p>
                                 <p>
                                     <span id="coupon-displayNumber">
-                                        {this.state.consumer.giftcardnumber}
+                                        **** **** **** ***
                                     </span>
                                     <span id="coupon-displayCode">
-                                        <span> {this.state.consumer.code}</span>
+                                        <span> *** </span>
                                     </span>
                                 </p>
                             </div>
                             <div className="result-right">
-                                <p>-${this.state.consumer.price}</p>
+                                <p>-$<span>0.00</span></p>
                             </div>
                         </React.Fragment>
                     )

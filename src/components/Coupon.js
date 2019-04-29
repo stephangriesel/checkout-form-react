@@ -92,12 +92,11 @@ class Coupon extends Component {
                             name="coupon"
                             value={this.state.coupon}
                             onChange={this.handleChange}
-                            // type="number" // react can only use string together with maxlength
                             maxLength="19"
                             id="number__gift-number"
                             placeholder="Gift Card Number"
                             onFocus={this.onInputFocus}
-                            onBlur={this.onInputBlur}
+                            // onBlur={this.onInputBlur}
                             required />
 
                         <input
@@ -109,7 +108,7 @@ class Coupon extends Component {
                             id="control__gift-number"
                             placeholder="Control Code"
                             onFocus={this.onInputFocus}
-                            onBlur={this.onInputBlur}
+                            // onBlur={this.onInputBlur}
                             required />
 
                         <button type="submit" className="apply-btn" >APPLY</button>

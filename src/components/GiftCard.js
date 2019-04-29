@@ -41,9 +41,6 @@ class GiftCard extends Component {
                     {this.state.showCoupon ?
                         <Coupon />
                         : null}
-
-                    {/* <button onClick={this.handleSubmit} className="apply-btn" >APPLY</button> */}
-
                 </div>
             </div>
         );
