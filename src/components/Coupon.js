@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Result from './Result';
+import MaskedInput from 'react-maskedinput';
 
 const initialState = {
     focus: false,
@@ -10,14 +11,16 @@ const initialState = {
     controlerror: ""
 }
 
-
-
 class Coupon extends Component {
     constructor(props) {
         super(props);
         this.state = initialState;
         this.showResult = this.showResult.bind(this); // es6 option also possible
     };
+
+    _onChange = (e) => {
+        this.setState({[e.target.name]: e.target.value})
+      }
 
     handleChange = (event, fieldName) => {
         console.log('property passed:', event.target.name);
@@ -34,6 +37,7 @@ class Coupon extends Component {
         this.setState({
             focus: true
         });
+        
     }
 
     onInputBlur = () => {
@@ -62,7 +66,7 @@ class Coupon extends Component {
         }
         fetch(url, {
             method: 'POST', // or 'PUT'
-            body: JSON.stringify(submitteddata), // data can be `string` or {object}!
+            body: JSON.stringify(submitteddata), 
             headers: {
                 'Content-Type': 'application/json'
             }
@@ -84,7 +88,7 @@ class Coupon extends Component {
         let couponerror = "";
         let controlerror = "";
 
-        if (!this.state.coupon) { // if it does not include
+        if (!this.state.coupon) { 
             couponerror = "Incorrect coupon code, please try again"
         }
 
@@ -113,28 +117,30 @@ class Coupon extends Component {
                         onSubmit={this.handleSubmit}
                         noValidate>
 
-                        <input
+                        
+                        <MaskedInput
                             name="coupon"
-                            type="password"
                             value={this.state.coupon}
-                            onChange={this.handleChange}
+                            onChange={this._onChange} 
                             maxLength="19"
+                            mask="1111 1111 1111 1111 111"
+                            type="text"
+                            pattern="[0-9]"
                             id="number__gift-number"
                             placeholder="Gift Card Number"
                             onFocus={this.onInputFocus}
-                            // onBlur={this.onInputBlur}
                             required />
 
-                        <input
+                        <MaskedInput
                             name="couponcontrol"
                             value={this.state.couponcontrol}
                             onChange={this.handleChange}
-                            // type="number"
-                            maxLength="3"
+                            type="text"
+                            pattern="[0-9]"
+                            mask="111"
                             id="control__gift-number"
                             placeholder="Control Code"
                             onFocus={this.onInputFocus}
-                            // onBlur={this.onInputBlur}
                             required />
 
                         <button type="submit" className="apply-btn" >APPLY</button>
@@ -147,6 +153,5 @@ class Coupon extends Component {
         )
     }
 }
-
 
 export default Coupon;
