@@ -15,13 +15,13 @@ class Coupon extends Component {
     constructor(props) {
         super(props);
         this.state = initialState;
-        this.showResult = this.showResult.bind(this); // es6 option also possible
+        this.showResult = this.showResult.bind(this);
     };
 
     _onChange = (e) => {
-        this.setState({[e.target.name]: e.target.value});
+        this.setState({ [e.target.name]: e.target.value });
 
-      }
+    }
 
     handleChange = (event, fieldName) => {
         console.log('property passed:', event.target.name);
@@ -38,7 +38,7 @@ class Coupon extends Component {
         this.setState({
             focus: true
         });
-        
+
     }
 
     onInputBlur = () => {
@@ -54,35 +54,28 @@ class Coupon extends Component {
 
     handleSubmit = (e) => {
         e.preventDefault();
-        console.log("Coupon: " + this.state.coupon);
-        console.log("Coupon Control Code: " + this.state.couponControl);
         const url = "http://localhost:3004/results";
 
         const submitteddata = [{
-            date:new Date(),
+            date: new Date(),
             giftcardnumber: this.state.coupon,
             code: this.state.couponControl,
-            price:"9.99"
+            price: "9.99"
         }]
 
         fetch(url, {
-            method: 'POST', // or 'PUT'
-            body: JSON.stringify(submitteddata), 
+            method: 'POST',
+            body: JSON.stringify(submitteddata),
             headers: {
                 'Content-Type': 'application/json'
             }
         })
-        .then(res => res.json())
-        // .then append to array
-        .then(response => console.log('Success:', JSON.stringify(response)))
-        .catch(error => console.error('Error:', error));
-        console.log(submitteddata)
+            .then(res => res.json())
+            .then(response => console.log('Success:', JSON.stringify(response)))
+            .catch(error => console.error('Error:', error));
 
-        // Validate form
         const isValid = this.validate();
         if (isValid) {
-            console.log(this.state);
-            //clear form
             this.setState(initialState);
         }
     };
@@ -91,11 +84,11 @@ class Coupon extends Component {
         let couponError = "";
         let controlError = "";
 
-        if (!this.state.coupon) { 
+        if (!this.state.coupon) {
             couponError = "Incorrect coupon code, please try again"
         }
 
-        if (!this.state.couponControl) { 
+        if (!this.state.couponControl) {
             controlError = "Incorrect coupon control code, please try again"
         }
 
@@ -120,11 +113,10 @@ class Coupon extends Component {
                         onSubmit={this.handleSubmit}
                         noValidate>
 
-                        
                         <MaskedInput
                             name="coupon"
                             value={this.state.coupon}
-                            onChange={this._onChange} 
+                            onChange={this._onChange}
                             maxLength="19"
                             mask="1111 1111 1111 1111 111"
                             type="text"
@@ -132,7 +124,7 @@ class Coupon extends Component {
                             id="number__gift-number"
                             placeholder="Gift Card Number"
                             onInput={this.replaceCharacter}
-                            
+
                             onFocus={this.onInputFocus}
                             required />
 
@@ -154,7 +146,6 @@ class Coupon extends Component {
                 <p className="errorMessage">{this.state.couponError}</p>
                 <p className="errorMessage">{this.state.controlError}</p>
             </div>
-
         )
     }
 }

@@ -9,7 +9,7 @@ class GiftCard extends Component {
         this.state = {
             showCoupon: false
         }
-        this.showCoupon = this.showCoupon.bind(this); // es6 option also possible
+        this.showCoupon = this.showCoupon.bind(this);
     }
 
     showCoupon() {
@@ -21,7 +21,6 @@ class GiftCard extends Component {
     handleSubmit = () => {
         console.log(this.state);
     }
-
 
     render() {
         return (

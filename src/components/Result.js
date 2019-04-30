@@ -24,7 +24,6 @@ class Result extends Component {
                 <div className="result-right">
                     <span className="amount">-€20.00</span>
                 </div>
-
             </div>
         )
     }
