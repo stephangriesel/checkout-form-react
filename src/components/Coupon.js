@@ -6,9 +6,9 @@ const initialState = {
     focus: false,
     showResult: true,
     coupon: "",
-    couponcontrol: "",
-    couponerror: "",
-    controlerror: ""
+    couponControl: "",
+    couponError: "",
+    controlError: ""
 }
 
 class Coupon extends Component {
@@ -19,7 +19,8 @@ class Coupon extends Component {
     };
 
     _onChange = (e) => {
-        this.setState({[e.target.name]: e.target.value})
+        this.setState({[e.target.name]: e.target.value});
+
       }
 
     handleChange = (event, fieldName) => {
@@ -53,26 +54,28 @@ class Coupon extends Component {
 
     handleSubmit = (e) => {
         e.preventDefault();
-        
-        // POST Data To Backend
         console.log("Coupon: " + this.state.coupon);
-        console.log("Coupon Control Code: " + this.state.couponcontrol);
+        console.log("Coupon Control Code: " + this.state.couponControl);
         const url = "http://localhost:3004/results";
-        const submitteddata = {
-            id:"1",
+
+        const submitteddata = [{
+            date:new Date(),
             giftcardnumber: this.state.coupon,
-            code: this.state.couponcontrol,
+            code: this.state.couponControl,
             price:"9.99"
-        }
+        }]
+
         fetch(url, {
             method: 'POST', // or 'PUT'
             body: JSON.stringify(submitteddata), 
             headers: {
                 'Content-Type': 'application/json'
             }
-        }).then(res => res.json())
-            .then(response => console.log('Success:', JSON.stringify(response)))
-            .catch(error => console.error('Error:', error));
+        })
+        .then(res => res.json())
+        // .then append to array
+        .then(response => console.log('Success:', JSON.stringify(response)))
+        .catch(error => console.error('Error:', error));
         console.log(submitteddata)
 
         // Validate form
@@ -85,19 +88,19 @@ class Coupon extends Component {
     };
 
     validate = () => {
-        let couponerror = "";
-        let controlerror = "";
+        let couponError = "";
+        let controlError = "";
 
         if (!this.state.coupon) { 
-            couponerror = "Incorrect coupon code, please try again"
+            couponError = "Coupon code is blank, please try again" 
         }
 
-        if (!this.state.controlerror) {
-            controlerror = "Your control code seems to be invalid, please try again"
+        if (!this.state.couponControl) { 
+            controlError = "Coupon control code is blank, please try again"
         }
 
-        if (couponerror || controlerror) {
-            this.setState({ couponerror, controlerror });
+        if (couponError || controlError) {
+            this.setState({ couponError, controlError });
             return false;
         }
 
@@ -110,30 +113,29 @@ class Coupon extends Component {
             <div className="show-coupon">
                 <p className="coupon-desc">Please enter the 19-digit number and code from your gift card below.</p>
                 {this.state.focus ?
-                    <Result coupon={this.state.coupon} couponcontrol={this.state.couponcontrol} />
+                    <Result coupon={this.state.coupon} couponControl={this.state.couponControl} />
                     : null}
                 <div className="gift-number">
                     <form className="giftnumber-input"
                         onSubmit={this.handleSubmit}
                         noValidate>
-
-                        
                         <MaskedInput
                             name="coupon"
                             value={this.state.coupon}
-                            onChange={this._onChange} 
+                            onChange={this._onChange}
                             maxLength="19"
                             mask="1111 1111 1111 1111 111"
                             type="text"
                             pattern="[0-9]"
                             id="number__gift-number"
                             placeholder="Gift Card Number"
+                            onInput={this.replaceCharacter}
                             onFocus={this.onInputFocus}
                             required />
 
                         <MaskedInput
-                            name="couponcontrol"
-                            value={this.state.couponcontrol}
+                            name="couponControl"
+                            value={this.state.couponControl}
                             onChange={this.handleChange}
                             type="text"
                             pattern="[0-9]"
@@ -146,8 +148,8 @@ class Coupon extends Component {
                         <button type="submit" className="apply-btn" >APPLY</button>
                     </form>
                 </div>
-                <p className="errorMessage">{this.state.couponerror}</p>
-                <p className="errorMessage">{this.state.controlerror}</p>
+                <p className="errorMessage">{this.state.couponError}</p>
+                <p className="errorMessage">{this.state.controlError}</p>
             </div>
 
         )

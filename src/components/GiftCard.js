@@ -9,7 +9,7 @@ class GiftCard extends Component {
         this.state = {
             showCoupon: false
         }
-        this.showCoupon = this.showCoupon.bind(this); // es6 option also possible
+        this.showCoupon = this.showCoupon.bind(this); 
     }
 
     showCoupon() {
@@ -22,13 +22,11 @@ class GiftCard extends Component {
         console.log(this.state);
     }
 
-
     render() {
         return (
             <div className="form-wrapper">
                 <div className="form">
                     <h4>Gift Cards</h4>
-
                     <div className="gift-checkbox">
                         <form>
                             <label className="container">Do you have a gift card?
@@ -37,7 +35,6 @@ class GiftCard extends Component {
                             </label>
                         </form>
                     </div>
-
                     {this.state.showCoupon ?
                         <Coupon />
                         : null}

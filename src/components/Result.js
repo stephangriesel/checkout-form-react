@@ -11,18 +11,18 @@ class Result extends Component {
         return (
             <div className="result">
                 <div className="result-left">
-                    <p>Gift card</p>
+                    <p>Gift Card</p>
                     <p>
                         <span id="coupon-displayNumber">
                             {this.props.coupon}
-                                    </span>
+                        </span>
                         <span id="coupon-displayCode">
-                            <span> {this.props.couponcontrol} </span>
+                            <span> {this.props.couponControl} </span>
                         </span>
                     </p>
                 </div>
                 <div className="result-right">
-                    <p>-$<span>9.99</span></p>
+                    <span class="amount">-€20.00</span>
                 </div>
 
             </div>
