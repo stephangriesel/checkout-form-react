@@ -22,7 +22,7 @@ class Result extends Component {
                     </p>
                 </div>
                 <div className="result-right">
-                    <span class="amount">-€20.00</span>
+                    <span className="amount">-€20.00</span>
                 </div>
 
             </div>

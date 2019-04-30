@@ -92,11 +92,11 @@ class Coupon extends Component {
         let controlError = "";
 
         if (!this.state.coupon) { 
-            couponError = "Coupon code is blank, please try again" 
+            couponError = "Incorrect coupon code, please try again"
         }
 
         if (!this.state.couponControl) { 
-            controlError = "Coupon control code is blank, please try again"
+            controlError = "Incorrect coupon control code, please try again"
         }
 
         if (couponError || controlError) {
@@ -119,10 +119,12 @@ class Coupon extends Component {
                     <form className="giftnumber-input"
                         onSubmit={this.handleSubmit}
                         noValidate>
+
+                        
                         <MaskedInput
                             name="coupon"
                             value={this.state.coupon}
-                            onChange={this._onChange}
+                            onChange={this._onChange} 
                             maxLength="19"
                             mask="1111 1111 1111 1111 111"
                             type="text"
@@ -130,6 +132,7 @@ class Coupon extends Component {
                             id="number__gift-number"
                             placeholder="Gift Card Number"
                             onInput={this.replaceCharacter}
+                            
                             onFocus={this.onInputFocus}
                             required />
 
