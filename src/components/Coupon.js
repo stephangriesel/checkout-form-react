@@ -24,7 +24,6 @@ class Coupon extends Component {
     }
 
     handleChange = (event, fieldName) => {
-        console.log('property passed:', event.target.name);
         this.setState({ [event.target.name]: event.target.value });
     };
 
@@ -60,7 +59,7 @@ class Coupon extends Component {
             date: new Date(),
             giftcardnumber: this.state.coupon,
             code: this.state.couponControl,
-            price: "9.99"
+            price: "20.00"
         }]
 
         fetch(url, {

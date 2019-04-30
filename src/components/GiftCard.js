@@ -19,7 +19,6 @@ class GiftCard extends Component {
     }
 
     handleSubmit = () => {
-        console.log(this.state);
     }
 
     render() {
